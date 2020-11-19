@@ -15,23 +15,20 @@ if ($conn->connect_error){
     die("Connection failed");
 }
 
-$sql = "SELECT * FROM `Art`";
+$sql = "SELECT `name`,`width`, `height`, `price` FROM `Art`";
 $result = $conn->query($sql);
 $painting = "";
 ?>
-<form action="OrderForm.php" method=post>
+<form action="MoreDetails.php" method=post>
     <?php
-    echo "<table><tr><th>ID</th><th>Painting</th><th>Completed On</th><th>Width</th><th>Height</th><th>Price</th><th>Description</th><th></th></tr>\n";
+    echo "<table><tr><th>Painting</th><th>Width</th><th>Height</th><th>Price</th><th></th></tr>\n";
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
-            echo "<tr><td>".$row["id"]."
-            </td><td>".$row["name"]."
-            </td><td>".$row["completion_date"]."
+            echo "<tr><td>".$row["name"]."
             </td><td>".$row["width"]."
             </td><td>".$row["height"]."
             </td><td>"."£".$row["price"]."
-            </td><td>".$row["description"]."
-           </td><td><button type='submit' name='id' value='".$row["id"]."'>Order</button></td></tr>\n";
+            </td><td><button type='submit' name='id' value='".$row["name"]."'>More</button></td></tr>\n";
 
         }
     }
@@ -43,8 +40,12 @@ $painting = "";
     ?>
 </form>
 <!--Art Listings Page:
-    -Current art in Database in HTML table
-    -An 'Order' button for each row (will take the user
-    to a form to place an order)-->
+    -Rework the listing so that users are
+    presented with only basic info on paintings (name, price and size).
+    -Replace the order button with a “More” button that takes the user
+    to a details page with full details (basic plus description),
+    an order button and a back button.
+    -Change the art listing page to show 12 paintings per page
+    with next and previous page buttons.-->
 </body>
 </html>
