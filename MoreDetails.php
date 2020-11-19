@@ -46,10 +46,18 @@ if($paintingID != ""){
 </table>
 </form>
 <form action="OrderForm.php" method=post name="orderForm">
-<table>
-   <td><button type='submit' name='id' value='<?php echo $id; ?>'>Order</button></td></tr>
-</table>
+
+   <button type='submit' name='id' value='<?php echo $id; ?>'>Order</button>
+
+
 </form>
+
+<br><button onclick="goBack()">Back</button>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 
 </body>
 </html>

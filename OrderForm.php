@@ -34,7 +34,7 @@ if($painting != ""){
 <head>
     <meta charset="UTF-8">
     <title>Make an Order | Cara Art</title>
-    <script src="validateForm.js"></script>
+<!--    <script src="validateForm.js"></script>-->
 </head>
 <body>
 <div id="paintingOrderDIV">
@@ -42,7 +42,7 @@ if($painting != ""){
     echo "<h1> Order of ".$name." with ID: ".$id.".</h1>";
     ?>
 </div>
-<div id="orderDIV">
+<div id="formDIV">
     <form action="OrderForm.php" method="post" name="orderForm">
 
         <table>
@@ -63,7 +63,6 @@ if($painting != ""){
                     }
                     $conn->close();
                     ?>">Submit</button></td></tr>
-            <tr><td> <p id="cost"></p></td></tr>
         </table>
     </form>
 </div>
