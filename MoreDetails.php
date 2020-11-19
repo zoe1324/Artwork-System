@@ -7,11 +7,29 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed");
 }
+$paintingID = isset($_POST["id"])? $_POST["id"] : "";
+$id = isset($id)? $id : "";
+$name = isset($name)? $name : "";
+$compDate = isset($compDate)? $compDate : "";
+$width = isset($width)? $width : "";
+$height = isset($height)? $height : "";
+$price = isset($price)? $price : "";
+$description = isset($description)? $description : "";
 
-$sql = "SELECT * FROM `Art`";
-$result = $conn->query($sql);
-$painting = "";
-
+if($paintingID != ""){
+    $sql = "SELECT * FROM `Art` WHERE id = $paintingID";
+    $result = $conn->query($sql);
+    if($result->num_rows > 0){
+        while($row = $result->fetch_assoc()){
+            $id = $row["id"]; $name = $row["name"]; $compDate = $row["completion_date"];
+            $width = $row["width"]; $height = $row["height"]; $price = $row["price"];
+            $description = $row["description"];
+        }
+    }
+    else{
+        die ("No Matches");
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,30 +39,15 @@ $painting = "";
 </head>
 <body>
 <form action="MoreDetails.php" method="post" >
-<?php
-if($result->num_rows > 0){
-    while($row = $result->fetch_assoc()){
-        echo "<tr><td>".$row["id"]."
-            </td><td>".$row["name"]."
-            </td><td>".$row["completion_date"]."
-            </td><td>".$row["width"]."
-            </td><td>".$row["height"]."
-            </td><td>"."£".$row["price"]."
-            </td><td>".$row["description"] ?>
+<table>
+    <tr><td><?php echo $id.": ".$name." Completed On: ".$compDate; ?> </td></tr>
+    <tr><td><?php echo "Width: ".$width." Height: ".$height." Price: £".$price; ?> </td></tr>
+    <tr><td><?php echo "Description: ".$description; ?> </td></tr>
+</table>
 </form>
 <form action="OrderForm.php" method=post name="orderForm">
 <table>
-    <button type='submit' name='id' value='<?php $row["id"]?>'>Order</button></td></tr>\n";
-    <?php
-    }
-}
-else{
-    die ("No Matches");
-}
-$conn->close();
-echo "</table>\n";
-
-?>
+   <td><button type='submit' name='id' value='<?php echo $id; ?>'>Order</button></td></tr>
 </table>
 </form>
 

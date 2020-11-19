@@ -15,7 +15,7 @@ if ($conn->connect_error){
     die("Connection failed");
 }
 
-$sql = "SELECT `name`,`width`, `height`, `price` FROM `Art`";
+$sql = "SELECT `id`,`name`,`width`, `height`, `price` FROM `Art`";
 $result = $conn->query($sql);
 $painting = "";
 ?>
@@ -28,7 +28,7 @@ $painting = "";
             </td><td>".$row["width"]."
             </td><td>".$row["height"]."
             </td><td>"."£".$row["price"]."
-            </td><td><button type='submit' name='id' value='".$row["name"]."'>More</button></td></tr>\n";
+            </td><td><button type='submit' name='id' value='".$row["id"]."'>More</button></td></tr>\n";
 
         }
     }
