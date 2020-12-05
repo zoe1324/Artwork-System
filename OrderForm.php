@@ -58,7 +58,7 @@ if($painting != ""){
                         if ($conn->query($sql) === TRUE) {
                             echo "inserted new entry with id " . $conn->insert_id;
                         } else {
-                            die ("Error: " . $sql . "<br>" . $conn->error);//FIXME only use during debugging
+                            die ("Error ");
                         }
                     }
                     $conn->close();

@@ -15,6 +15,7 @@ $width = isset($width)? $width : "";
 $height = isset($height)? $height : "";
 $price = isset($price)? $price : "";
 $description = isset($description)? $description : "";
+$image = isset($image)? $image : "";
 
 if($paintingID != ""){
     $sql = "SELECT * FROM `Art` WHERE id = $paintingID";
@@ -23,6 +24,7 @@ if($paintingID != ""){
         while($row = $result->fetch_assoc()){
             $id = $row["id"]; $name = $row["name"]; $compDate = $row["completion_date"];
             $width = $row["width"]; $height = $row["height"]; $price = $row["price"];
+            $image = $row["image"];
             $description = $row["description"];
         }
     }
@@ -40,8 +42,10 @@ if($paintingID != ""){
 <body>
 <form action="MoreDetails.php" method="post" >
 <table>
+
     <tr><td><?php echo $id.": ".$name." Completed On: ".$compDate; ?> </td></tr>
     <tr><td><?php echo "Width: ".$width." Height: ".$height." Price: £".$price; ?> </td></tr>
+    <tr><?php echo '<td><img src="data:image/png;base64,' . base64_encode($image) . '"/></td>'; ?></tr>
     <tr><td><?php echo "Description: ".$description; ?> </td></tr>
 </table>
 </form>
