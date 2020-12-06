@@ -38,22 +38,28 @@ if($paintingID != ""){
 <head>
     <meta charset="UTF-8">
     <title>Art Listings | Cara Art</title>
+    <style>
+        img{
+            max-height: 66vh;
+            max-width: 66vw;
+        }
+    </style>
 </head>
+
 <body>
+
 <form action="MoreDetails.php" method="post" >
 <table>
-
-    <tr><td><?php echo $id.": ".$name." Completed On: ".$compDate; ?> </td></tr>
+    <tr><td><h1><?php echo $id.": ".$name; ?> </h1></td></tr>
+    <tr><td><?php echo "Completed On: ".$compDate; ?></td></tr>
     <tr><td><?php echo "Width: ".$width." Height: ".$height." Price: £".$price; ?> </td></tr>
-    <tr><?php echo '<td><img src="data:image/png;base64,' . base64_encode($image) . '"/></td>'; ?></tr>
+    <tr><?php echo '<td><img src="data:image/png;base64,' . base64_encode($image) .'" alt="photo" /></td>'; ?></tr>
     <tr><td><?php echo "Description: ".$description; ?> </td></tr>
 </table>
 </form>
+
 <form action="OrderForm.php" method=post name="orderForm">
-
    <button type='submit' name='id' value='<?php echo $id; ?>'>Order</button>
-
-
 </form>
 
 <br><button onclick="goBack()">Back</button>

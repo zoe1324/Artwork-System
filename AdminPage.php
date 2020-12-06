@@ -5,14 +5,14 @@
     <title>Admin | Cara Art</title>
 </head>
 <body>
-
+<button onclick="document.location='index.php'">Home</button>
 <?php $pass = strip_tags(isset($_POST["password"])? $_POST["password"] : "");
 showForm($pass);
 function showForm($pass){
     if($pass == ""){?>
         <form action="AdminPage.php" method="post" name="passForm">
             <table>
-                <tr>Password:<td><input type="password" name="password" required/></td></tr>
+                <tr><td>Password:<input type="password" name="password" required/></td></tr>
                 <tr><td><input type="submit"/></td></tr>
             </table>
         </form>

@@ -19,7 +19,7 @@ $address = strip_tags(isset($_POST["address"])? $_POST["address"] : "");
 </head>
 <body>
 <h1>BOOK ART GALLERY APPOINTMENTS HERE</h1>
-
+<button onclick="document.location='index.php'">Home</button>
 <div id="formDIV">
     <form action="TrackAndTrace.php" method="post" name="TrackAndTrace">
 
@@ -28,7 +28,7 @@ $address = strip_tags(isset($_POST["address"])? $_POST["address"] : "");
             <tr><td class="label">Address</td><td><input type="text" name="address" value="<?php echo $address; ?>" required/></td></tr>
             <tr><td class="label">Phone No.</td><td><input type="number" name="phoneNo" value="<?php echo $phoneNo; ?>" required/></td></tr>
             <tr><td class="label">Date and Time</td><td><input type="datetime-local" name="dateTime" value="<?php echo $dateTime; ?>" required/></td></tr>
-            <tr><td class="label"><button onclick="
+            <tr><td class="label"></td><td><button onclick="
             <?php if ($name != "" && $address != "" && $phoneNo != "" && $dateTime != ""){
                         $sql = "INSERT INTO `Appointments` (id, booking_name, postal_address, phone_no, date_time) VALUES (NULL,'$name','$address','$phoneNo','$dateTime');";
                         if ($conn->query($sql) === TRUE) {
@@ -41,7 +41,7 @@ $address = strip_tags(isset($_POST["address"])? $_POST["address"] : "");
                     ?>">Submit</button></td></tr>
         </table>
     </form>
-
+</div>
 <!--validate date time to be impossible to book before present time-->
 
 </body>

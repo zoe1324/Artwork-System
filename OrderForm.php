@@ -6,7 +6,6 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error){
     die("Connection failed");
 }
-
 $painting = isset($_POST["id"])? $_POST["id"] : "";
 $buyerName = strip_tags(isset($_POST["buyerName"])? $_POST["buyerName"] : "");
 $phoneNo = strip_tags(isset($_POST["phoneNo"])? $_POST["phoneNo"] : "");
@@ -15,6 +14,7 @@ $address = strip_tags(isset($_POST["address"])? $_POST["address"] : "");
 
 $id = isset($id)? $id : "";
 $name = isset($name)? $name : "";
+
 
 if($painting != ""){
     $sql = "SELECT * FROM `Art` WHERE id = $painting";
@@ -27,8 +27,8 @@ if($painting != ""){
     else{
         die ("No Matches");
     }
-} ?>
-
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,22 +41,27 @@ if($painting != ""){
     <?php
     echo "<h1> Order of ".$name." with ID: ".$id.".</h1>";
     ?>
+    <button onclick="goBack()">Back</button>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </div>
 <div id="formDIV">
     <form action="OrderForm.php" method="post" name="orderForm">
 
         <table>
-            <tr><td><input type="hidden" name="name" value="<?php echo $name; ?>"/></td></tr>
-            <tr><td><input type="hidden" name="id" value="<?php echo $id; ?>"/></td></tr>
+            <tr><td><input type="hidden" name="name" value="<?php echo $name; ?>"/></td><td></td></tr>
+            <tr><td><input type="hidden" name="id" value="<?php echo $id; ?>"/></td><td></td></tr>
             <tr><td class="label">Name</td><td><input type="text" name="buyerName" value="<?php echo $buyerName; ?>" required/></td></tr>
             <tr><td class="label">Phone No.</td><td><input type="number" name="phoneNo" value="<?php echo $phoneNo; ?>" required/></td></tr>
             <tr><td class="label">Email</td><td><input type="email" name="email" value="<?php echo $email; ?>" required/></td></tr>
             <tr><td class="label">Address</td><td><input type="text" name="address" value="<?php echo $address ?>" required/></td></tr>
-            <tr><td class="label"><button onclick="
+            <tr><td class="label"></td><td><button onclick="
             <?php if ($buyerName != "" && $phoneNo != "" && $email != "" && $address != ""){
                         $sql = "INSERT INTO `ArtOrders` (order_id, painting_id, painting_name, buyer_name, email, address, phone_no) VALUES (NULL,'$id','$name','$buyerName','$email','$address','$phoneNo');";
                         if ($conn->query($sql) === TRUE) {
-                            echo "inserted new entry with id " . $conn->insert_id;
                         } else {
                             die ("Error ");
                         }
@@ -66,6 +71,7 @@ if($painting != ""){
         </table>
     </form>
 </div>
+
 <!--
 For assessment 2 it is better if you apply best
 practice for "safety". All errors should ideally

@@ -7,13 +7,13 @@
 <body>
 
 <h1>Cara Art</h1>
-<a href="https://devweb2020.cis.strath.ac.uk/~xeb18139/vuoncgnrqzcfnek/WADAss2/AdminPage.php">Admin</a>
+<button onclick="document.location='AdminPage.php'">Admin</button>
 
 <p> Hello there! My name is Cara and I have been creating art for 10 years! My passion is to capture my visions of the world and present them to you in the most creative way possible! My art style is unique and represents me as a person. Please have a browse!
 </p>
 
-<a href="https://devweb2020.cis.strath.ac.uk/~xeb18139/vuoncgnrqzcfnek/WADAss2/ArtListings.php">My Art</a> <br>
-<a href="https://devweb2020.cis.strath.ac.uk/~xeb18139/vuoncgnrqzcfnek/WADAss2/TrackAndTrace.php">Track & Trace Bookings</a>
+<button onclick="document.location='ArtListings.php'">My Art</button>
+<button onclick="document.location='TrackAndTrace.php'">Track & Trace Bookings</button>
 
 </body>
 </html>
