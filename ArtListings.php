@@ -20,15 +20,17 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error){
     die("Connection failed");
 }
-//$recsPerPage = 12;
+$offset = 12;
+$recsPerPage = isset($_POST["recsPerPage"])? $_POST["recsPerPage"] : $offset;
 $count = isset($_POST["count"])? $_POST["count"] : 0;
-$sql = "SELECT `id`,`name`,`width`, `height`, `price`, `image` FROM `Art`";
-//$count = "SELECT COUNT(*) FROM `Art`";
-//$total = $conn->query($count);
+$total = "SELECT `id` FROM `Art`";
+$sql = "SELECT `id`,`name`,`width`, `height`, `price`, `image` FROM `Art` WHERE `id` > $count AND `id` <= $recsPerPage";
+
 $result = $conn->query($sql);
+$amount = $conn->query($total);
 $painting = "";
-
-
+$pages = ceil($amount->num_rows / $offset);
+$currPage = isset($_POST["currPage"])? $_POST["currPage"] : 1;
 ?>
 <form action="MoreDetails.php" method="post">
     <?php
@@ -40,7 +42,6 @@ $painting = "";
             </td><td>"."£".$row["price"]."
             </td><td><img src='data:image/png;base64,".base64_encode($row["image"])."'
             </td><td><button type='submit' name='id' value='".$row["id"]."'>More</button></td></tr>\n";
-
         }
     }
     else{
@@ -51,8 +52,23 @@ $painting = "";
     ?>
 </form>
 
-<!--Art Listings Page:
-    -Change the art listing page to show 12 paintings per page
-    with next and previous page buttons.-->
+<form action="ArtListings.php" method="post">
+    <?php
+    if ($currPage > 1){
+    ?>
+    <tr><td><input type="hidden" name="currPage" value="<?php echo $currPage - 1;?>"></td></tr>
+    <tr><td><input type="hidden" name="count" value="<?php echo $count - $offset;?>"></td></tr>
+    <tr><td><input type="hidden" name="recsPerPage" value="<?php echo $recsPerPage - $offset;?>"></td></tr>
+    <tr><td><button type="submit">Prev</button></td></tr>
+</form>
+<?php
+}
+if($currPage < $pages){?>
+    <form action="ArtListings.php" method="post">
+    <tr><td><input type="hidden" name="currPage" value="<?php echo $currPage + 1;?>"></td></tr>
+    <tr><td><input type="hidden" name="count" value="<?php echo $count + $offset;?>"></td></tr>
+    <tr><td><input type="hidden" name="recsPerPage" value="<?php echo $recsPerPage + $offset;?>"></td></tr>
+    <tr><td><button type="submit">Next</button></td></tr>
+    </form><?php } ?>
 </body>
 </html>
