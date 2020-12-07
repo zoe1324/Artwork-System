@@ -44,31 +44,35 @@ if($paintingID != ""){
             max-width: 66vw;
         }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
-
 <body>
+<div class="container">
+    <div class="page-header"><h1><?php echo $id.": ".$name; ?> </h1></div>
 
-<form action="MoreDetails.php" method="post" >
-<table>
-    <tr><td><h1><?php echo $id.": ".$name; ?> </h1></td></tr>
-    <tr><td><?php echo "Completed On: ".$compDate; ?></td></tr>
-    <tr><td><?php echo "Width: ".$width." Height: ".$height." Price: £".$price; ?> </td></tr>
-    <tr><?php echo '<td><img src="data:image/png;base64,' . base64_encode($image) .'" alt="photo" /></td>'; ?></tr>
-    <tr><td><?php echo "Description: ".$description; ?> </td></tr>
-</table>
-</form>
+        <form action="MoreDetails.php" method="post" >
+            <table>
+                <tr><td class="info"><?php echo "Completed On: ".$compDate; ?></td></tr>
+                <tr><td class="info"><?php echo "Width: ".$width." Height: ".$height." Price: £".$price; ?> </td></tr>
+                <tr><?php echo '<td><img src="data:image/png;base64,' . base64_encode($image) .'" alt="photo" /></td>'; ?></tr>
+                <tr><td class="info"><?php echo "Description: ".$description; ?> </td></tr>
+            </table>
+        </form>
 
-<form action="OrderForm.php" method=post name="orderForm">
-   <button type='submit' name='id' value='<?php echo $id; ?>'>Order</button>
-</form>
+    <form action="OrderForm.php" method=post name="orderForm">
+        <button type='submit' name='id' value='<?php echo $id; ?>' class="btn btn-light">Order</button>
+    </form>
 
-<br><button onclick="goBack()">Back</button>
+    <br><button onclick="goBack()" class="btn btn-light">Back</button>
     <script>
         function goBack() {
             window.history.back();
         }
     </script>
 
+</div>
 </body>
 </html>
 

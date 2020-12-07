@@ -15,15 +15,21 @@ $address = strip_tags(isset($_POST["address"])? $_POST["address"] : "");
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>View My Art | Cara Art</title>
+    <title>Track and Trace Bookings | Cara Art</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
-<h1>BOOK ART GALLERY APPOINTMENTS HERE</h1>
-<button onclick="document.location='index.php'">Home</button>
-<div id="formDIV">
-    <form action="TrackAndTrace.php" method="post" name="TrackAndTrace">
+<div class="container">
+    <div class="page-header">
+        <h1>Track and Trace Bookings</h1>
+        <button onclick="document.location='index.php'" class="btn btn-light">Home</button>
+    </div>
+    <div class="jumbotron">
+     <form action="TrackAndTrace.php" method="post" name="TrackAndTrace" class="form">
 
-        <table>
+        <table class='table table-centered table-transparent'>
             <tr><td class="label">Name</td><td><input type="text" name="bookingName" value="<?php echo $name; ?>" required/></td></tr>
             <tr><td class="label">Address</td><td><input type="text" name="address" value="<?php echo $address; ?>" required/></td></tr>
             <tr><td class="label">Phone No.</td><td><input type="number" name="phoneNo" value="<?php echo $phoneNo; ?>" required/></td></tr>
@@ -38,11 +44,11 @@ $address = strip_tags(isset($_POST["address"])? $_POST["address"] : "");
                         }
                     }
                     $conn->close();
-                    ?>">Submit</button></td></tr>
+                    ?>" class="btn btn-dark">Submit</button></td></tr>
         </table>
     </form>
+    </div>
+    <!--validate date time to be impossible to book before present time-->
 </div>
-<!--validate date time to be impossible to book before present time-->
-
 </body>
 </html>

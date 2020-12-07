@@ -1,0 +1,41 @@
+.jumbotron{
+    text-align: center;
+    color: aliceblue;
+}
+.page-header{
+    text-align: center;
+    font-family: "Times New Roman";
+    padding: 50px;
+    color: aliceblue;
+}
+body{
+    background-color: #1a1a1a;
+}
+.fineprint{
+    font-size: x-small;
+}
+p{
+    color: #1a1a1a;
+    font-size: medium;
+    font-family: "Times New Roman";
+}
+td{
+    font-family: "Times New Roman";
+}
+th{
+    font-family: "Times New Roman";
+}
+button{
+    font-family: "Times New Roman";
+}
+.info{
+    color: aliceblue;
+}
+.label{
+    color: #1a1a1a;
+    font-family: "Times New Roman";
+}
+.select{
+    text-align: center;
+    padding: 10px;
+}

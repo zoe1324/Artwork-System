@@ -34,24 +34,28 @@ if($painting != ""){
 <head>
     <meta charset="UTF-8">
     <title>Make an Order | Cara Art</title>
-<!--    <script src="validateForm.js"></script>-->
+    <!--    <script src="validateForm.js"></script>-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
-<div id="paintingOrderDIV">
+<div class="container">
+    <div class="page-header">
     <?php
     echo "<h1> Order of ".$name." with ID: ".$id.".</h1>";
     ?>
-    <button onclick="goBack()">Back</button>
+    <button onclick="goBack()" class="btn btn-light">Back</button>
     <script>
         function goBack() {
             window.history.back();
         }
     </script>
 </div>
-<div id="formDIV">
+    <div class="jumbotron">
     <form action="OrderForm.php" method="post" name="orderForm">
 
-        <table>
+        <table class='table table-centered table-transparent'>
             <tr><td><input type="hidden" name="name" value="<?php echo $name; ?>"/></td><td></td></tr>
             <tr><td><input type="hidden" name="id" value="<?php echo $id; ?>"/></td><td></td></tr>
             <tr><td class="label">Name</td><td><input type="text" name="buyerName" value="<?php echo $buyerName; ?>" required/></td></tr>
@@ -67,11 +71,11 @@ if($painting != ""){
                         }
                     }
                     $conn->close();
-                    ?>">Submit</button></td></tr>
+                    ?>" class="btn btn-light">Submit</button></td></tr>
         </table>
     </form>
+    </div>
 </div>
-
 <!--
 For assessment 2 it is better if you apply best
 practice for "safety". All errors should ideally
