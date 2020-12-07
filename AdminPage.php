@@ -21,7 +21,7 @@
             <form action="AdminPage.php" method="post" name="passForm" class="form">
                 <table class="table table-centered table-transparent">
                     <tr><td class="label">Password:<input type="password" name="password" required/></td></tr>
-                    <tr><td><button type="submit" class="btn btn-light">Submit</td></tr>
+                    <tr><td><button type="submit" class="btn btn-light">Submit</button></td></tr>
                 </table>
             </form>
         <?php }

@@ -15,7 +15,7 @@
     </div>
 
      <div class="jumbotron">
-         <img src="cara.jpg">
+         <img src="cara.jpg" alt="cara">
          <p class="fineprint">CC Image "Cara C" by Jose Mesa flic.kr/p/cKF1Dw</p>
         <p> Hello there! My name is Cara and I have been creating art for 10 years! My passion is to capture my visions of the world and present them to you in the most creative way possible! My art style is unique and represents me as a person. Please have a browse!</p>
          <button onclick="document.location='ArtListings.php'" class="btn btn-dark">My Art Listings</button>
